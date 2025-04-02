@@ -2,6 +2,7 @@
 
 Weather::Weather()
 {
+
 }
 
 void Weather::SetApi(String apiKey)
@@ -14,13 +15,18 @@ void Weather::SetLocation(String location)
     this->location = location;
 }
 
+void Weather::SetApiHost(String apiHost)
+{
+    this->apiHost = apiHost;
+}
+
 bool Weather::updateWeather()
 {
     HTTPClient http;   //用于访问网络
     WiFiClient *stream;
     int size;
     
-    http.begin("https://devapi.qweather.com/v7/weather/now?location="+ this->location + "&key=" + this->apiKey); //获取天气信息
+    http.begin("https://"+ this->apiHost + "/v7/weather/now?location="+ this->location + "&key=" + this->apiKey); //获取天气信息
     int httpcode = http.GET();   //发送GET请求
     if(httpcode > 0)
     {

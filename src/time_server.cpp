@@ -182,14 +182,17 @@ void time_server_forceupdate()
     }
 }
 
-void weather_init(String apiKey, String location)
+void weather_init(String apiKey, String location, String ApiHost)
 {
     weather.SetApi(apiKey);
     weather.SetLocation(location);
+    weather.SetApiHost(ApiHost);
 }
 
 void weather_update()
 {
+    if(qWeather_Key != NULL && qWeather_ApiHost != NULL)
+    {
         weather.updateWeather();
 
         int weatherCode = weather.getWeather();
@@ -201,6 +204,7 @@ void weather_update()
         lv_label_set_text_fmt(ui_Temperature, "%03d℃", weather.getTemp());
         lv_label_set_text_fmt(ui_Humidity, "%03d%%", weather.getHumidity());
         lv_label_set_text(ui_WeatherCHN, weather.getWeatherText().c_str());
+    }
 }
 
 const lv_img_dsc_t* get_weather_icon(int code)

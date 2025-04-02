@@ -31,6 +31,7 @@ extern bool USBA_Switch;
 extern uint16_t UpdateWeater_Time;
 extern String CityCode;
 extern String qWeather_Key;
+extern String qWeather_ApiHost;
 extern uint8_t TimeZone;
 extern uint8_t SyncTime;
 extern String NTPServer;

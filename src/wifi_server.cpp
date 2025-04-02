@@ -11,6 +11,7 @@ void Webconfig()
   wm.resetSettings(); // wipe settings
   
   WiFiManagerParameter  custom_citycode("CityCode","CityCode","101280101",9);
+  WiFiManagerParameter  custom_qweatherapihost("qWeatherApiHost","QWeather API Host","",32);
   WiFiManagerParameter  custom_qweatherkey("qWeatherKey","QWeather User Key","",32);
   WiFiManagerParameter  custom_ntpserver("NTPServer","NTP Server","pool.ntp.org",32);
   WiFiManagerParameter  custom_timezone("TimeZone","Time Zone","8",2);
@@ -19,6 +20,8 @@ void Webconfig()
 
   wm.addParameter(&p_lineBreak_notext);
   wm.addParameter(&custom_citycode);
+  wm.addParameter(&p_lineBreak_notext);
+  wm.addParameter(&custom_qweatherapihost);
   wm.addParameter(&p_lineBreak_notext);
   wm.addParameter(&custom_qweatherkey);
   wm.addParameter(&p_lineBreak_notext);
@@ -51,6 +54,7 @@ String getParam(String name){
 void saveParamCallback(){
     //将从页面中获取的数据保存
     CityCode =  getParam("CityCode");
+    qWeather_ApiHost = getParam("qWeatherApiHost");
     qWeather_Key = getParam("qWeatherKey");
     TimeZone = getParam("TimeZone").toInt();
     NTPServer = getParam("NTPServer");
@@ -58,7 +62,7 @@ void saveParamCallback(){
 
     save_web_config();
     time_server_setting(NTPServer.c_str(), TimeZone, SyncTime);
-    weather_init(qWeather_Key, CityCode);
+    weather_init(qWeather_Key, CityCode, qWeather_ApiHost);
 
 }
 

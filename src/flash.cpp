@@ -69,6 +69,7 @@ void save_web_config()
 {
     flash.begin("setting");
     flash.putString("CityCode", CityCode);
+    flash.putString("qWeather_ApiHost", qWeather_ApiHost);
     flash.putString("qWeather_Key", qWeather_Key);
     flash.putUInt("TimeZone", TimeZone);
     flash.putString("NTPServer", NTPServer);
@@ -88,6 +89,7 @@ void load_web_config()
     {
         CityCode = "101280101";
     }
+    qWeather_ApiHost = flash.getString("qWeather_ApiHost", "");
     qWeather_Key = flash.getString("qWeather_Key", "");
     TimeZone = flash.getUInt("TimeZone", 8);
     NTPServer = flash.getString("NTPServer", "pool.ntp.org");

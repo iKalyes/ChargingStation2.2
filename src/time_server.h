@@ -19,7 +19,7 @@ void time_server_update();
 void time_server_reconnect();
 void time_server_forceupdate();
 
-void weather_init(String apiKey, String location);
+void weather_init(String apiKey, String location, String ApiHost);
 void weather_update();
 
 void deep_sleep();
