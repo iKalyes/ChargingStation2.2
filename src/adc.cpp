@@ -23,16 +23,29 @@ float updateBuffer(float newValue, float* buffer) {
 void adc_init()
 {
     analogReadResolution(12);
-    adc_timer = lv_timer_create(adc_task, 500, NULL);
+    adc_timer = lv_timer_create(adc_task, 100, NULL);
 }
 
 // 读取和平滑处理
 void readVoltages() {
     // 读取原始值
-    float raw0 = voltage0_adc * (float)(analogRead(ADC0_PIN)) * 1e-3;
-    float raw1 = voltage1_adc * (float)(analogRead(ADC1_PIN)) * 1e-3;
-    float raw2 = voltage2_adc * (float)(analogRead(ADC2_PIN)) * 1e-3;
-    float raw3 = voltage3_adc * (float)(analogRead(ADC3_PIN)) * 1e-3;
+    float raw0 = voltage0_adc * (float)(analogReadMilliVolts(ADC0_PIN)) * 1e-3;
+    float raw1 = voltage1_adc * (float)(analogReadMilliVolts(ADC1_PIN)) * 1e-3;
+    float raw2 = voltage2_adc * (float)(analogReadMilliVolts(ADC2_PIN)) * 1e-3;
+    float raw3 = voltage3_adc * (float)(analogReadMilliVolts(ADC3_PIN)) * 1e-3;
+
+    if(raw0 < 2.0) {
+        raw0 = 0;
+    }
+    if(raw1 < 2.0) {
+        raw1 = 0;
+    }
+    if(raw2 < 2.0) {
+        raw2 = 0;
+    }
+    if(raw3 < 2.0) {
+        raw3 = 0;
+    }
     
     // 平滑处理
     voltage0 = updateBuffer(raw0, voltage0_buffer);
