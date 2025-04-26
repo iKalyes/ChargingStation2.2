@@ -4,7 +4,3 @@ Desktop Charging Station VERSION:2.2 Source Code And UI File Repo.
 Copyright ©️ iKalyes 2025  
 License - CERN-OHL-P v2  
 任何形式的使用、研究、修改、共享和分发硬件设计及基于这些设计的产品请遵守开源协议。	
-
-
-
-
