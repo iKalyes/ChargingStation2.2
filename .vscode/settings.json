@@ -10,5 +10,9 @@
         "string_view": "cpp",
         "initializer_list": "cpp",
         "cmath": "cpp"
-    }
+    },
+    "idf.pythonInstallPath": "D:\\Espressif\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.espIdfPathWin": "D:/Espressif/frameworks/esp-idf-v5.3.1/",
+    "idf.toolsPathWin": "D:\\Espressif",
+    "idf.portWin": "COM17"
 }
